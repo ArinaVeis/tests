@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:wght@300;400;500;700&display=swap');
+        * {
+            background-color: #fcfeff;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', serif;
+            font-weight: 400;
+        }
+        .grid-conteiner {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            grid-template-rows: 100%;
+            grid-template-areas: 'text_block img';
+        }
+        .grid-items {
+            margin: 17% 15%;
+            grid-area: 'text_block';
+            height: 100vh;
+        }
+        .logo img {
+            width: 2%;
+            vertical-align: middle;
+            margin: 0 0.5% 0 0;
+        }
+        .logo {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.3vi;
+            margin: 4% 0 0% 7.5%;
+        }
+        .worgs-of-greeting {
+            font-weight: bold;
+            width: fit-content;
+            text-transform: uppercase;
+            font-size: 1vi;
+            color: #6BB8E7;
+            margin: 0 0 3% 0;
+            padding: 0;
+            overflow: hidden;
+            border-right: .17em solid #e29508;  
+            white-space: nowrap;   
+            animation:  
+            typing 2.5s steps(30, end),
+            blink-caret .7s step-end infinite,
+            showup 3s 1;
+        }
+        .large-text {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.7vi;
+            margin: 0 0 5% 0;
+            overflow: hidden;
+            animation: reveal 14s 1, slidein 16s ease-out 1;
+        }
+        .color-sokratika {
+            font-family: 'Roboto Slab', serif;
+            color: #6BB8E7;
+        }
+        .light-text {
+            font-size: 1vi;
+            animation: reveal 18s 1;
+        }
+        .open-second-win {
+            background-color: #6BB8E7;
+            color: #fff;
+            margin: 7% 0;
+            border: none;
+            font-size: 1.2vi;
+            padding: 0.7vi 1.8vi;
+            border-radius: 6px;
+            animation: reveal 18s 1;
+            cursor: pointer;
+            outline: none;
+        }
+        .open-second-win:hover {
+            background-color: #515CA5;
+        }
+        .open-second-win:active {
+            background-color: #EA567A;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 31% }
+            }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #EA567A }
+        }
+        .gif-conteiner {
+            grid-area: 'img';
+            height: 100%;
+            margin-top: 5%;
+        }
+        .gif {
+            width: 75%;
+            animation-name: anim;
+            animation-duration: .77s;
+        }
+        
+        @keyframes anim {
+            from {
+                margin-left: 15%;
+                opacity: 0;
+            }
+            to {
+                margin-left: 0%;
+                opacity: 1;
+            }
+        }
+        @keyframes showup {
+            0% {
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes slidein {
+            0% {
+                margin-left: -800px;
+                white-space: wrap;
+            }
+            10% {
+                margin-left: -800px;
+                white-space: wrap;
+            }
+            25% {
+                margin-left: 0px;
+                white-space: wrap;
+            }
+            100% {
+                margin-left: 0px;
+                white-space: wrap;
+            }
+        }
+        @keyframes reveal {
+            0% {
+                opacity: 0;
+            }
+            20% {
+                opacity: 0;
+            }
+            30% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+        
+            }
+        }
+        .second-win-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            opacity: 0; 
+            pointer-events: none; 
+            transition: 0.5s all;
+        }
+        .second-win-bg.active { 
+            opacity: 1; 
+            pointer-events: all; 
+            transition: 0.5s all;
+        }
+        .second-win {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0); 
+            background: #f5f5f5;
+            border-radius: 20px;
+            width: 90vh;
+            padding: 25px;
+            transition: 0.5s all;
+        }
+        .second-win.active { 
+            transform: translate(-50%, -50%) scale(1); 
+            transition: 0.5s all;
+        }
+        .second-win-img {
+            width: 100%;
+            background-color: #f5f5f5;
+        }
+
+        @media screen and (max-width: 768px){
+            .grid-conteiner {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr;
+                grid-template-areas: 'text_block' 'img';
+                
+            }
+            .logo img {
+                width: 6%;
+                
+                margin: 0 1% 0 0;
+            }
+            .logo {
+                font-size: 4.5vi;
+            }
+            .grid-items {
+                margin: 6% 6% 2% 6%;
+                grid-area: 'text_block';
+                height: auto;
+            }
+            .worgs-of-greeting {
+                font-size: 3vi;
+                margin: 1% 0 4% 3%;
+                padding: 0;
+            }
+            .large-text {
+                font-size: 6.8vi;
+                margin: 0 0 5% 0;
+            }
+            .light-text {
+                font-size: 3vi;
+            }
+            .open-second-win {
+                margin: 7% 0 0 0;
+                border: none;
+                font-size: 3.2vi;
+                padding: 2vi 3.8vi;
+            }
+            .gif-conteiner {
+                width: 100%;
+                height: 50%;
+                margin-top: 0;
+            }
+            .gif {
+                width: 70%;
+                margin: 0 10% 0 10%;
+                animation-name: anim;
+                animation-duration: 4s;
+            }
+            .second-win {
+                width: 80%;
+            }
+            @keyframes typing {
+                from { width: 0 }
+                to { width: 36% }
+                }
+            @keyframes anim {
+                from {
+                    margin-left: 15%;
+                    opacity: 0;
+                }
+                to {
+                    margin-left: 10%;
+                    opacity: 1;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+                <img class="icon-logo" src="images/logo.png">Сократика
+            </div>
+           
+    <div class="grid-conteiner">
+        <div class="grid-items">
+            
+            <div class="worgs-of-greeting">добро пожаловать</div>
+            <div class="large-text">Создавай презентации по школьной программе вместе с <span class="color-sokratika">Сократика</span></div>
+            <div class="light-text">Используя искусственный интеллект, ты за считанные секунды получишь идеальную презентацию, которая подойдет для проведения уроков в школе на любую тему</div>
+            <button class="open-second-win">Начать</button>
+        </div>
+        <div class="gif-conteiner">
+            <img class="gif" src="images/gif2.gif"></img>
+        </div> 
+    </div>
+    <div class="second-win-bg"> 
+        <form class="second-win">
+            <img src="images/Speed-test-pana.gif" class="second-win-img">
+        </form>
+    </div>  
+    <script src="script.js"></script>
+</body>
+</html>
